@@ -40,7 +40,7 @@ async def main():
 
     @bot.event
     async def on_ready():
-        await bot.change_presence(activity=nextcord.Game("with Slash Commands"))
+        await bot.change_presence(activity=nextcord.Game("with Cosmo and Aki"))
 
         print(f"Online and Ready\nLogged in as {bot.user}")
 
