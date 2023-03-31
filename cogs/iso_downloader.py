@@ -130,10 +130,9 @@ class IsoDownloader(commands.Cog):
                     case False:
                         try:
                             os.remove(CONFIG["ISO_DOWNLOADER"]["ISO_PATH"] + entry.name)
+                            await self.log(f"Deleted old ISO `{entry.name}`")
                         except:
                             pass
-
-                        await self.log(f"Deleted old ISO `{entry.name}`")
 
     @nextcord.slash_command(
         "iso-downloader",
