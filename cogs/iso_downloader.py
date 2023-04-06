@@ -68,7 +68,7 @@ class IsoDownloader(commands.Cog):
             for entry in await response.json():
                 data.append(IsoEntry(**entry))
 
-            return data
+        return data
 
     def needs_update_or_download(self, entry: IsoEntry):
         downloaded = {
