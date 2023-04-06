@@ -71,6 +71,9 @@ class IsoDownloader(commands.Cog):
             return data
 
     def needs_update_or_download(self, entry: IsoEntry):
+        if entry.name in self.isos_to_keep:
+            return True
+
         downloaded = {
             x.name: datetime.datetime.fromtimestamp(x.stat().st_mtime)
             for x in os.scandir(CONFIG["ISO_DOWNLOADER"]["ISO_PATH"])
@@ -81,8 +84,6 @@ class IsoDownloader(commands.Cog):
                 entry.mod_time.date()
                 > datetime.datetime.utcnow().date() - datetime.timedelta(days=3)
             ):
-                return True
-            elif entry.name in self.isos_to_keep:
                 return True
             else:
                 return False
