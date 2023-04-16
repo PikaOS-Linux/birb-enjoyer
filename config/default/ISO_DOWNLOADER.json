@@ -1,5 +1,5 @@
 {
     "BASE_URL": "https://iso.pika-os.com/",
     "ISO_PATH": "/mnt/data/isos/Cosmo/",
-    "LOG_WEBHOOK_URL": "https://discord.com/api/webhooks/1090407217016094740/7ipaL3u3ygjzVAGvPWFkbgx7tk2guJctFGgmtEzBp6sI49j1PA_vcOoYbpJ_ei9mk0S7"
+    "LOG_WEBHOOK_URL": ""
 }
