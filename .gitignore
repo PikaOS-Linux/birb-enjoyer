@@ -9,3 +9,5 @@ __pycache__
 /windows_installer.exe
 /data
 /config/*.json
+temp
+torrents

@@ -2,3 +2,6 @@ nextcord[speed, voice]  == 2.6.*
 orjson                  == 3.9.*
 aiohttp                 == 3.8.*
 aiofiles                == 23.2.*
+qbittorrent-api         == 2023.9.53
+py3createtorrent        == 1.1.*
+requests                == 2.31.*
