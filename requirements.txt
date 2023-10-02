@@ -1,4 +1,4 @@
-nextcord[speed, voice]  >=  2.4.2,  == 2.4.*
-orjson                  >=  3.8.6,  == 3.8.*
-aiohttp                 >=  3.8.4,  == 3.8.*
-aiofiles                >=  23.1.0, == 23.1.*
+nextcord[speed, voice]  == 2.6.*
+orjson                  == 3.9.*
+aiohttp                 == 3.8.*
+aiofiles                == 23.2.*
