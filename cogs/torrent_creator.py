@@ -105,8 +105,8 @@ class TorrentCreator(commands.Cog):
     @nextcord.slash_command(
         "create-torrent",
         description="Takes a URL to a file, downloads it, makes a Torrent from it, returns you the .torrent file.",
-        dm_permission=False
-        default_member_permissions=nextcord.Permissions(administrator=True)
+        dm_permission=False,
+        default_member_permissions=nextcord.Permissions(administrator=True),
     )
     async def create_torrent_command(
         self, interaction: nextcord.Interaction, file_url: str
@@ -119,6 +119,7 @@ class TorrentCreator(commands.Cog):
 
         torrent_file = await self.create_torrent(file_url)
         await interaction.send(file=torrent_file)
+
 
 async def setup(bot):
     bot.add_cog(TorrentCreator(bot))
