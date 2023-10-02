@@ -1,0 +1,8 @@
+{
+    "QBT_API_CONN_INFO": {
+        "host": "localhost",
+        "port": 8080,
+        "username": "admin",
+        "password": "adminadmin"
+    }
+}
