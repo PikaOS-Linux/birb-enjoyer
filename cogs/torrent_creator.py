@@ -51,7 +51,7 @@ class TorrentCreator(commands.Cog):
         if not os.path.isdir("./torrents"):
             os.mkdir("torrents")
 
-        if "Birb Enjoyer" not in self.qbt_api.torrent_tags.tags:
+        if "Birb Enjoyer" not in self.qbt_api.torrents_tags():
             self.qbt_api.torrents_create_tags("Birb Enjoyer")
 
         filename = file_url.rsplit("/", 1)[1]
