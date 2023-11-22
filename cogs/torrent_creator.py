@@ -64,7 +64,8 @@ class TorrentCreator(commands.Cog):
                     "./temp/" + filename,
                     mode="wb+",
                 ) as f:
-                    await f.write(await resp.read())
+                    async for chunk in resp.content.iter_chunked(8192):
+                        await f.write(chunk)
 
         await asyncio.get_running_loop().run_in_executor(
             None,
@@ -82,7 +83,12 @@ class TorrentCreator(commands.Cog):
                 "/mnt/home/Drive/torrents/data/" + filename,
                 mode="wb+",
             ) as dst:
-                await dst.write(await src.read())
+                while True:
+                    chunk = await src.read(8192)
+                    if not chunk:
+                        break  # Reached the end of the file
+
+                    await dst.write(chunk)
 
         os.remove(f"./temp/{filename}")
 
@@ -111,14 +117,20 @@ class TorrentCreator(commands.Cog):
     async def create_torrent_command(
         self, interaction: nextcord.Interaction, file_url: str
     ):
+        if (
+            not isinstance(interaction.channel, nextcord.TextChannel)
+            or interaction.user is None
+        ):
+            return
+
         if not self.is_valid_file_url(file_url):
             await interaction.send("Thats not a valid file URL", ephemeral=True)
             return
 
-        await interaction.response.defer()
+        await interaction.send("Ok, working on it. One sec.")
 
         torrent_file = await self.create_torrent(file_url)
-        await interaction.send(file=torrent_file)
+        await interaction.channel.send(interaction.user.mention, file=torrent_file)
 
 
 async def setup(bot):
