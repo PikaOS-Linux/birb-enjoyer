@@ -1,14 +1,14 @@
 import asyncio
 import io
 import os
-import subprocess
+
 import aiofiles
 import aiohttp
-
 import nextcord
+import py3createtorrent
 import qbittorrentapi
-from nextcord.ext import commands
 import requests
+from nextcord.ext import commands
 
 from internal_tools.configuration import CONFIG
 from internal_tools.discord import *
@@ -69,10 +69,17 @@ class TorrentCreator(commands.Cog):
 
         await asyncio.get_running_loop().run_in_executor(
             None,
-            lambda: subprocess.Popen(
-                f'./.venv/bin/py3createtorrent ./temp/{filename} -o torrents/ --quiet --node router.bittorrent.com,8991 -p 512 -c "Created by Birb Enjoyer" -f --md5 --webseed {file_url}',
-                shell=True,
-            ).communicate(),
+            lambda: py3createtorrent.create_torrent(
+                path=f"./temp/{filename}",
+                output="torrents/",
+                quiet=True,
+                nodes=["router.bittorrent.com,8991"],
+                piece_length=512,
+                comment="Created by Birb Enjoyer",
+                force=True,
+                include_md5=True,
+                webseeds=[file_url],
+            ),
         )
 
         async with aiofiles.open(
