@@ -4,4 +4,4 @@ aiohttp                 == 3.9.*
 aiofiles                == 23.2.*
 qbittorrent-api         == 2024.3.60
 py3createtorrent        == 1.2.*
-requests                == 2.31.*
+requests                == 2.32.*
