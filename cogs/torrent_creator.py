@@ -58,7 +58,9 @@ class TorrentCreator(commands.Cog):
         if "?" in filename:
             filename = filename.split("?", 1)[0]
 
-        async with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession(
+            timeout=aiohttp.ClientTimeout(total=1800)
+        ) as session:
             async with session.get(file_url) as resp:
                 async with aiofiles.open(
                     "./temp/" + filename,
