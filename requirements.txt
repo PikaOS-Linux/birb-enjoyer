@@ -1,5 +1,5 @@
 nextcord[speed, voice]  == 2.6.*
-orjson                  == 3.10.*
+orjson                  == 3.11.*
 aiohttp                 == 3.12.*
 aiofiles                == 24.1.*
 qbittorrent-api         == 2025.7.0
