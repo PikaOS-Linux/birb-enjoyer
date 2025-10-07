@@ -1,4 +1,4 @@
-nextcord[speed, voice]  == 2.6.*
+nextcord[speed, voice]  == 3.1.*
 orjson                  == 3.11.*
 aiohttp                 == 3.12.*
 aiofiles                == 24.1.*
